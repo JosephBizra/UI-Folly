@@ -21,123 +21,141 @@ import img16 from './Assets/images/img16.jpg';
 const imgArray = [
   {
     id: 1,
-    url: img1
+    url: img1,
+    clicked: false
   },
   {
     id: 2,
-    url: img2
+    url: img2,
+    clicked: false
   },
   {
     id: 3,
-    url: img3
+    url: img3,
+    clicked: false
   },
   {
     id: 4,
-    url: img4
+    url: img4,
+    clicked: false
   },
   {
     id: 5,
-    url: img5
+    url: img5,
+    clicked: false
   },
   {
     id: 6,
-    url: img6
+    url: img6,
+    clicked: false
   },
   {
     id: 7,
-    url: img7
+    url: img7,
+    clicked: false
   },
   {
     id: 8,
-    url: img8
+    url: img8,
+    clicked: false
   },
   {
     id: 9,
-    url: img9
+    url: img9,
+    clicked: false
   },
   {
     id: 10,
-    url: img10
+    url: img10,
+    clicked: false
   },
   {
     id: 11,
-    url: img11
+    url: img11,
+    clicked: false
   },
   {
     id: 12,
-    url: img12
+    url: img12,
+    clicked: false
   },
   {
     id: 13,
-    url: img13
+    url: img13,
+    clicked: false
   },
   {
     id: 14,
-    url: img14
+    url: img14,
+    clicked: false
   },
   {
     id: 15,
-    url: img15
+    url: img15,
+    clicked: false
   },
   {
     id: 16,
-    url: img16
+    url: img16,
+    clicked: false
   },
 
 ]
 class App extends React.Component {
   // state is an object for storing data in class.
   state = {
-    images: imgArray
+    images: imgArray,
+    score: 0
   }
   // function for shuffling an array.
-  shuffle = () =>{
-    let a = this.state.images;
+  shuffle = (item) => {
+
+    // is that one clicked
+    // if it's not,
+    // mark it as clicked and continue
+    // otherwise, we lost
+
+    let a = this.state.images.map(m => m);
     for (let i = a.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [a[i], a[j]] = [a[j], a[i]];
+    }
+    this.setState(
+      {
+        images: a,
+      })
+      if(item.clicked === false){
+        item.clicked = true;
+        this.state.score = this.state.score + 1;
+      }else{
+      this.state.score = 0;
+      alert("You Lose");
+      };
+    console.log(item.clicked);
+    console.log(this.state.score);
   }
-  this.setState({images: a});
-  }
-  // click = () =>{
-  //   let clicked = false; 
-  //   if (clicked = false){
-  //     clicked = true;
-  //   } else{
-  //     clicked = false;
-  //   }
-  // }
+
   //render method displays DOM by returning elements
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to joseph.
-        </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-        </a>
+        {/* <header className="App-header"> */}
+        <div id="head">hbyhruf6d</div>
+        <div id="grid">
           {
             this.state.images.map(e =>
-              <img 
+              <img
                 // onClick={() => this.click()}
-                onClick={() => this.shuffle()}
+                onClick={() => this.shuffle(e)}
                 // have to give element unique id and name to work dynamically.
-                key={e.id} 
-                src={e.url} 
-                className="img" 
+                key={e.id}
+                src={e.url}
+                className="img"
               />
             )
           }
-
-        </header>
+          {/* </header> */}
+        </div>
       </div>
     );
   }
