@@ -33,13 +33,34 @@
 }
 .img{
   width: 100%;
-  height: 200px;
+  height: 120px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border: solid black 2px;
 }
 #head{
   background: green;
   color: white;
-  padding: 15px;
+  padding: 5px;
+  font-size: 30px;
+}
+#score {
+  display: inline;
+  position: absolute;
+  right: 30px;
+}
+#stuff {
+  background: url("./Assets/images/background.jpg");
 }
 #grid {
   columns: 4;
+  column-gap: 10px;
+  width: 70%;
+  padding: 0 10px;
+  margin: auto;
+  position: relative;
+}
+footer{
+  background: green;
+  padding: 10px;
 }

@@ -124,13 +124,14 @@ class App extends React.Component {
       {
         images: a,
       })
-      if(item.clicked === false){
-        item.clicked = true;
-        this.state.score = this.state.score + 1;
-      }else{
+    if (item.clicked === false) {
+      item.clicked = true;
+      this.state.score = this.state.score + 1;
+    } else {
+      item.clicked = false;
       this.state.score = 0;
       alert("You Lose");
-      };
+    };
     console.log(item.clicked);
     console.log(this.state.score);
   }
@@ -139,23 +140,24 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header"> */}
-        <div id="head">hbyhruf6d</div>
-        <div id="grid">
-          {
-            this.state.images.map(e =>
-              <img
-                // onClick={() => this.click()}
-                onClick={() => this.shuffle(e)}
-                // have to give element unique id and name to work dynamically.
-                key={e.id}
-                src={e.url}
-                className="img"
-              />
-            )
-          }
-          {/* </header> */}
+        <div id="head">CLICKY GAME <div id="score">Score: {this.state.score}/16</div></div>
+        <div id="stuff">
+          <div id="grid">
+            {
+              this.state.images.map(e =>
+                <img
+                  // onClick={() => this.click()}
+                  onClick={() => this.shuffle(e)}
+                  // have to give element unique id and name to work dynamically.
+                  key={e.id}
+                  src={e.url}
+                  className="img"
+                />
+              )
+            }
+          </div>
         </div>
+        <footer>Click each image only once</footer>
       </div>
     );
   }
